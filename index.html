@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NT Studio — Soluciones Digitales</title>
-<link rel="icon" type="image/png" href="resource/image/NT basico.png">
+<link rel="icon" type="image/png" href="https://portfoli-niko.netlify.app/assets/logo-nt.png">
+
 <style>
 :root{
   --bg:#030308;--bg2:#070712;
@@ -100,35 +101,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:16px 0;background:rg
 .b-ok{background:rgba(52,211,153,.08);color:var(--green);border:1px solid rgba(52,211,153,.2);}
 .b-soon{background:rgba(251,191,36,.08);color:#fbbf24;border:1px solid rgba(251,191,36,.2);}
 
-/* HOLOGRAPHIC CARDS */
-.holo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
-.holo-card{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4;cursor:none;transform-style:preserve-3d;transition:transform .1s;}
-.holo-card:hover .holo-shine{opacity:1;}
-.holo-bg{position:absolute;inset:0;display:flex;flex-direction:column;}
-.holo-mini-nav{height:24px;display:flex;align-items:center;padding:0 12px;gap:5px;flex-shrink:0;}
-.holo-mini-dot{width:7px;height:7px;border-radius:50%;}
-.holo-mini-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:12px;position:relative;}
-.holo-code-lines{position:absolute;inset:0;overflow:hidden;opacity:.18;}
-.holo-code-line{position:absolute;left:0;right:0;height:1px;background:currentColor;}
-.holo-logo-wrap{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;}
-.holo-h1{height:9px;border-radius:4px;width:68%;margin-top:4px;}
-.holo-h2{height:7px;border-radius:4px;width:48%;opacity:.55;}
-.holo-btn{height:22px;width:100px;border-radius:4px;margin-top:6px;}
-.holo-bottom{padding:14px 16px;border-top:1px solid rgba(255,255,255,.06);flex-shrink:0;}
-.holo-name{font-size:.92rem;font-weight:700;color:#fff;margin-bottom:4px;letter-spacing:.3px;}
-.holo-type{font-size:.72rem;color:var(--muted);font-family:'Segoe UI',sans-serif;margin-bottom:10px;}
-.holo-tags{display:flex;flex-wrap:wrap;gap:5px;}
-.htag{font-size:.62rem;font-weight:700;padding:3px 8px;letter-spacing:.5px;}
-
-/* holographic shine overlay */
-.holo-shine{position:absolute;inset:0;border-radius:16px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:10;
-background:radial-gradient(ellipse at var(--mx,50%) var(--my,50%),rgba(255,255,255,.18) 0%,rgba(99,102,241,.12) 30%,rgba(56,189,248,.08) 60%,transparent 80%);}
-.holo-card::after{content:'';position:absolute;inset:0;border-radius:16px;border:1px solid rgba(255,255,255,.1);pointer-events:none;z-index:11;}
-.holo-card:hover::after{border-color:rgba(99,102,241,.4);}
-
-/* iridescent border animation */
-@keyframes iridescent{0%{border-color:rgba(99,102,241,.4);}25%{border-color:rgba(56,189,248,.4);}50%{border-color:rgba(52,211,153,.4);}75%{border-color:rgba(244,114,182,.4);}100%{border-color:rgba(99,102,241,.4);}}
-.holo-card:hover::after{animation:iridescent 3s linear infinite;}
+/* PROJ INTERACTOR */
+.proj-item:hover .proj-title{opacity:1!important;transform:translateX(8px)!important;color:#fff!important;}
+.proj-item:hover .proj-num{color:var(--indigo)!important;}
+.proj-item:hover .proj-sub{opacity:1!important;color:var(--indigo)!important;}
+@media(max-width:700px){#gsapProjects{flex-direction:column!important;}}
 
 /* TESTIMONIOS */
 .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
@@ -312,102 +289,80 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
       <h2 class="s-title">Resultados reales<br>para negocios reales</h2>
       <p class="s-sub">Cada tarjeta es un proyecto entregado. Pasá el mouse para ver la magia.</p>
     </div>
-    <div class="holo-grid">
+    <!-- GSAP INTERACTOR -->
+    <div id="gsapProjects" class="reveal" style="width:100%;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:40px;min-height:520px;">
 
-      <!-- UY Q RICO -->
-      <div class="holo-card reveal" id="hc0">
-        <div class="holo-bg" style="background:linear-gradient(160deg,#0c1a3e,#1a3a8f,#1e4fd8);">
-          <div class="holo-mini-nav" style="background:rgba(0,0,0,.3);">
-            <div class="holo-mini-dot" style="background:#ef4444;"></div>
-            <div class="holo-mini-dot" style="background:#fbbf24;"></div>
-            <div class="holo-mini-dot" style="background:#22c55e;"></div>
-          </div>
-          <div class="holo-mini-body">
-            <div class="holo-code-lines" style="color:#60a5fa;">
-              <div class="holo-code-line" style="top:10%;"></div><div class="holo-code-line" style="top:20%;"></div><div class="holo-code-line" style="top:30%;"></div><div class="holo-code-line" style="top:40%;"></div><div class="holo-code-line" style="top:50%;"></div><div class="holo-code-line" style="top:60%;"></div><div class="holo-code-line" style="top:70%;"></div><div class="holo-code-line" style="top:80%;"></div>
+      <!-- LEFT: MENU -->
+      <div style="flex:1;z-index:20;">
+        <ul style="display:flex;flex-direction:column;gap:36px;list-style:none;">
+          <li class="proj-item" data-index="0" style="cursor:none;">
+            <div style="display:flex;align-items:flex-start;gap:16px;">
+              <span class="proj-num" id="pnum0" style="font-size:1.4rem;font-weight:700;color:var(--indigo);transition:all .4s;margin-top:4px;font-family:'Courier New',monospace;">01 /</span>
+              <div>
+                <h3 class="proj-title" id="ptitle0" style="font-size:clamp(1.8rem,3.5vw,3rem);font-weight:900;text-transform:uppercase;letter-spacing:-1px;line-height:.9;color:#fff;opacity:1;transform:translateX(8px);transition:all .5s;">UY q'<br>Rico</h3>
+                <p class="proj-sub" id="psub0" style="font-size:.78rem;color:var(--indigo);margin-top:8px;letter-spacing:1px;font-family:'Segoe UI',sans-serif;opacity:1;transition:all .4s;">Sandwichería · Landing Page · WhatsApp</p>
+              </div>
             </div>
-            <div class="holo-logo-wrap">
-              <svg width="90" height="90" viewBox="0 0 200 200"><circle cx="100" cy="100" r="96" fill="#2563eb"/><text x="100" y="72" text-anchor="middle" font-family="Arial Black" font-weight="900" font-size="40" fill="white">UY</text><text x="100" y="108" text-anchor="middle" font-family="Arial Black" font-weight="900" font-size="28" fill="white">q'</text><text x="100" y="152" text-anchor="middle" font-family="Arial Black" font-weight="900" font-size="40" fill="#93c5fd">RiCO</text></svg>
-              <div class="holo-h1" style="background:rgba(255,255,255,.45);"></div>
-              <div class="holo-h2" style="background:rgba(255,255,255,.25);"></div>
-              <div class="holo-btn" style="background:#fbbf24;"></div>
+          </li>
+          <li class="proj-item" data-index="1" style="cursor:none;">
+            <div style="display:flex;align-items:flex-start;gap:16px;">
+              <span class="proj-num" id="pnum1" style="font-size:1.4rem;font-weight:700;color:var(--muted);transition:all .4s;margin-top:4px;font-family:'Courier New',monospace;">02 /</span>
+              <div>
+                <h3 class="proj-title" id="ptitle1" style="font-size:clamp(1.8rem,3.5vw,3rem);font-weight:900;text-transform:uppercase;letter-spacing:-1px;line-height:.9;color:var(--muted);opacity:.35;transform:translateX(0);transition:all .5s;">Uno +<br>Uno</h3>
+                <p class="proj-sub" id="psub1" style="font-size:.78rem;color:var(--muted);margin-top:8px;letter-spacing:1px;font-family:'Segoe UI',sans-serif;opacity:.35;transition:all .4s;">Gym & Belleza · Landing Page · Turnos</p>
+              </div>
             </div>
-          </div>
-          <div class="holo-bottom" style="background:rgba(0,0,0,.3);">
-            <div class="holo-name">UY q' Rico</div>
-            <div class="holo-type">Sandwichería · Landing Page</div>
-            <div class="holo-tags">
-              <span class="htag" style="background:rgba(99,102,241,.15);color:#818cf8;border:1px solid rgba(99,102,241,.25);">HTML/CSS</span>
-              <span class="htag" style="background:rgba(99,102,241,.15);color:#818cf8;border:1px solid rgba(99,102,241,.25);">WhatsApp</span>
-              <span class="htag" style="background:rgba(99,102,241,.15);color:#818cf8;border:1px solid rgba(99,102,241,.25);">Netlify</span>
+          </li>
+          <li class="proj-item" data-index="2" style="cursor:none;">
+            <div style="display:flex;align-items:flex-start;gap:16px;">
+              <span class="proj-num" id="pnum2" style="font-size:1.4rem;font-weight:700;color:var(--muted);transition:all .4s;margin-top:4px;font-family:'Courier New',monospace;">03 /</span>
+              <div>
+                <h3 class="proj-title" id="ptitle2" style="font-size:clamp(1.8rem,3.5vw,3rem);font-weight:900;text-transform:uppercase;letter-spacing:-1px;line-height:.9;color:var(--muted);opacity:.35;transform:translateX(0);transition:all .5s;">Silvia<br>Tortas</h3>
+                <p class="proj-sub" id="psub2" style="font-size:.78rem;color:var(--muted);margin-top:8px;letter-spacing:1px;font-family:'Segoe UI',sans-serif;opacity:.35;transition:all .4s;">Pastelería · Landing Page · Catálogo</p>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="holo-shine" id="hs0"></div>
+          </li>
+        </ul>
       </div>
 
-      <!-- UNO + UNO -->
-      <div class="holo-card reveal" id="hc1">
-        <div class="holo-bg" style="background:linear-gradient(160deg,#0e0220,#1f0440,#2d065c);">
-          <div class="holo-mini-nav" style="background:rgba(0,0,0,.4);">
-            <div class="holo-mini-dot" style="background:#ef4444;"></div>
-            <div class="holo-mini-dot" style="background:#fbbf24;"></div>
-            <div class="holo-mini-dot" style="background:#22c55e;"></div>
-          </div>
-          <div class="holo-mini-body">
-            <div class="holo-code-lines" style="color:#e879f9;">
-              <div class="holo-code-line" style="top:10%;"></div><div class="holo-code-line" style="top:20%;"></div><div class="holo-code-line" style="top:30%;"></div><div class="holo-code-line" style="top:40%;"></div><div class="holo-code-line" style="top:50%;"></div><div class="holo-code-line" style="top:60%;"></div><div class="holo-code-line" style="top:70%;"></div><div class="holo-code-line" style="top:80%;"></div>
-            </div>
-            <div class="holo-logo-wrap">
-              <svg width="90" height="90" viewBox="0 0 200 200"><circle cx="100" cy="100" r="96" fill="#1a0535"/><circle cx="100" cy="100" r="88" fill="none" stroke="#e879f9" stroke-width="5"/><text x="100" y="70" text-anchor="middle" font-family="Arial Black" font-weight="900" font-size="36" fill="#e879f9">UNO</text><rect x="52" y="87" width="28" height="7" rx="3" fill="#67e8f9"/><rect x="45" y="82" width="9" height="17" rx="3" fill="#67e8f9"/><rect x="77" y="82" width="9" height="17" rx="3" fill="#67e8f9"/><text x="102" y="100" text-anchor="middle" font-family="Arial Black" font-weight="900" font-size="18" fill="#e879f9">+</text><ellipse cx="130" cy="91" rx="10" ry="7" fill="#f472b6"/><ellipse cx="146" cy="91" rx="10" ry="7" fill="#f472b6"/><ellipse cx="138" cy="92" rx="5" ry="5" fill="#ec4899"/><text x="100" y="138" text-anchor="middle" font-family="Arial Black" font-weight="900" font-size="36" fill="#67e8f9">UNO</text><text x="100" y="162" text-anchor="middle" font-family="Arial" font-size="11" fill="#94a3b8">GYM · ESTILO · BELLEZA</text></svg>
-              <div class="holo-h1" style="background:linear-gradient(90deg,rgba(232,121,249,.5),rgba(103,232,249,.5));"></div>
-              <div class="holo-h2" style="background:rgba(232,121,249,.25);"></div>
-              <div class="holo-btn" style="background:linear-gradient(90deg,#e879f9,#67e8f9);"></div>
-            </div>
-          </div>
-          <div class="holo-bottom" style="background:rgba(0,0,0,.35);">
-            <div class="holo-name">Uno + Uno</div>
-            <div class="holo-type">Gym & Belleza · Landing Page</div>
-            <div class="holo-tags">
-              <span class="htag" style="background:rgba(232,121,249,.12);color:#e879f9;border:1px solid rgba(232,121,249,.25);">HTML/CSS</span>
-              <span class="htag" style="background:rgba(232,121,249,.12);color:#e879f9;border:1px solid rgba(232,121,249,.25);">Animaciones</span>
-              <span class="htag" style="background:rgba(232,121,249,.12);color:#e879f9;border:1px solid rgba(232,121,249,.25);">Turnos</span>
-            </div>
-          </div>
-        </div>
-        <div class="holo-shine" id="hs1"></div>
-      </div>
-
-      <!-- ST SILVIA TORTAS -->
-      <div class="holo-card reveal" id="hc2">
-        <div class="holo-bg" style="background:linear-gradient(160deg,#3d0018,#7a0230,#9d1050);">
-          <div class="holo-mini-nav" style="background:rgba(0,0,0,.3);">
-            <div class="holo-mini-dot" style="background:#ef4444;"></div>
-            <div class="holo-mini-dot" style="background:#fbbf24;"></div>
-            <div class="holo-mini-dot" style="background:#22c55e;"></div>
-          </div>
-          <div class="holo-mini-body">
-            <div class="holo-code-lines" style="color:#f9a8d4;">
-              <div class="holo-code-line" style="top:10%;"></div><div class="holo-code-line" style="top:20%;"></div><div class="holo-code-line" style="top:30%;"></div><div class="holo-code-line" style="top:40%;"></div><div class="holo-code-line" style="top:50%;"></div><div class="holo-code-line" style="top:60%;"></div><div class="holo-code-line" style="top:70%;"></div><div class="holo-code-line" style="top:80%;"></div>
-            </div>
-            <div class="holo-logo-wrap">
-              <svg width="90" height="90" viewBox="0 0 200 200"><circle cx="100" cy="100" r="96" fill="#9d174d"/><circle cx="100" cy="100" r="88" fill="#be185d"/><ellipse cx="100" cy="148" rx="44" ry="12" fill="#f9a8d4"/><rect x="56" y="112" width="88" height="38" rx="8" fill="#fbcfe8"/><ellipse cx="100" cy="112" rx="44" ry="12" fill="white" opacity=".9"/><path d="M62 112 Q72 103 82 112 Q92 103 100 112 Q108 103 118 112 Q128 103 138 112" fill="none" stroke="#f472b6" stroke-width="2.5"/><rect x="97" y="82" width="6" height="22" rx="2" fill="#c084fc"/><ellipse cx="100" cy="78" rx="5" ry="7" fill="#fbbf24"/><ellipse cx="100" cy="80" rx="3" ry="4" fill="#f97316"/><text x="100" y="140" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="20" fill="#be185d">ST</text><text x="100" y="176" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="white">Silvia Tortas</text></svg>
-              <div class="holo-h1" style="background:rgba(249,168,212,.5);"></div>
-              <div class="holo-h2" style="background:rgba(249,168,212,.25);"></div>
-              <div class="holo-btn" style="background:#f472b6;"></div>
-            </div>
-          </div>
-          <div class="holo-bottom" style="background:rgba(0,0,0,.3);">
-            <div class="holo-name">ST — Silvia Tortas</div>
-            <div class="holo-type">Pastelería · Landing Page</div>
-            <div class="holo-tags">
-              <span class="htag" style="background:rgba(244,114,182,.12);color:#f472b6;border:1px solid rgba(244,114,182,.25);">HTML/CSS</span>
-              <span class="htag" style="background:rgba(244,114,182,.12);color:#f472b6;border:1px solid rgba(244,114,182,.25);">Catálogo</span>
-              <span class="htag" style="background:rgba(244,114,182,.12);color:#f472b6;border:1px solid rgba(244,114,182,.25);">WhatsApp</span>
-            </div>
-          </div>
-        </div>
-        <div class="holo-shine" id="hs2"></div>
+      <!-- RIGHT: SVG ANIMATED -->
+      <div style="flex:1;display:flex;justify-content:center;align-items:center;position:relative;">
+        <div style="position:absolute;width:120%;height:120%;background:radial-gradient(ellipse,rgba(99,102,241,.08),transparent 70%);pointer-events:none;border-radius:50%;"></div>
+        <svg id="projSvg" viewBox="0 0 500 500" style="width:100%;max-width:460px;height:auto;z-index:10;filter:drop-shadow(0 0 40px rgba(99,102,241,.2));">
+          <defs>
+            <!-- CLIP 0: UY q Rico — franjas horizontales estilo menú -->
+            <clipPath id="clip0">
+              <rect class="cp0" x="8" y="30" width="484" height="70" rx="8"/>
+              <rect class="cp0" x="8" y="120" width="484" height="120" rx="8"/>
+              <rect class="cp0" x="8" y="260" width="484" height="55" rx="6"/>
+              <rect class="cp0" x="8" y="335" width="484" height="55" rx="6"/>
+              <rect class="cp0" x="8" y="410" width="484" height="82" rx="8"/>
+            </clipPath>
+            <!-- CLIP 1: Uno+Uno — grid 2x3 estilo gym -->
+            <clipPath id="clip1">
+              <rect class="cp1" x="10" y="10" width="230" height="300" rx="16"/>
+              <rect class="cp1" x="260" y="10" width="230" height="140" rx="16"/>
+              <rect class="cp1" x="260" y="170" width="108" height="140" rx="16"/>
+              <rect class="cp1" x="382" y="170" width="108" height="140" rx="16"/>
+              <rect class="cp1" x="10" y="330" width="480" height="160" rx="16"/>
+            </clipPath>
+            <!-- CLIP 2: Silvia Tortas — grid 3x3 cuadrados suaves -->
+            <clipPath id="clip2">
+              <rect class="cp2" x="10" y="10" width="148" height="148" rx="20"/>
+              <rect class="cp2" x="176" y="10" width="148" height="148" rx="20"/>
+              <rect class="cp2" x="342" y="10" width="148" height="148" rx="20"/>
+              <rect class="cp2" x="10" y="176" width="148" height="148" rx="20"/>
+              <rect class="cp2" x="176" y="176" width="148" height="148" rx="20"/>
+              <rect class="cp2" x="342" y="176" width="148" height="148" rx="20"/>
+              <rect class="cp2" x="10" y="342" width="148" height="148" rx="20"/>
+              <rect class="cp2" x="176" y="342" width="148" height="148" rx="20"/>
+              <rect class="cp2" x="342" y="342" width="148" height="148" rx="20"/>
+            </clipPath>
+          </defs>
+          <g id="projImgGroup" clip-path="url(#clip0)">
+            <image id="projImg" href="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&q=80" width="500" height="500" preserveAspectRatio="xMidYMid slice"/>
+          </g>
+        </svg>
       </div>
 
     </div>
