@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NT Studio ® — Soluciones Digitales</title>
-<link rel="icon" type="image/png" href="resource/image/NT basico.png">
+<title>NT Studio — Soluciones Digitales</title>
+<link rel="icon" type="image/png" href="https://portfoli-niko.netlify.app/assets/logo-nt.png">
 
 <style>
 :root{
@@ -101,7 +101,52 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:16px 0;background:rg
 .b-ok{background:rgba(52,211,153,.08);color:var(--green);border:1px solid rgba(52,211,153,.2);}
 .b-soon{background:rgba(251,191,36,.08);color:#fbbf24;border:1px solid rgba(251,191,36,.2);}
 
-/* GSAP CARDS */
+/* ── CHATBOT ── */
+#chatBtn{position:fixed;bottom:32px;right:32px;z-index:1000;cursor:none;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--indigo),var(--cyan));display:flex;align-items:center;justify-content:center;box-shadow:0 0 28px rgba(99,102,241,.45);transition:transform .25s,box-shadow .25s;}
+#chatBtn:hover{transform:scale(1.1);box-shadow:0 0 44px rgba(99,102,241,.65);}
+.chat-avatar{font-family:'Courier New',monospace;font-weight:800;font-size:.9rem;color:#fff;letter-spacing:1px;}
+.chat-ping{position:absolute;top:2px;right:2px;width:13px;height:13px;border-radius:50%;background:#34d399;border:2px solid var(--bg);animation:chatPing 1.8s infinite;}
+@keyframes chatPing{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.4);opacity:.5;}}
+
+#chatBox{position:fixed;bottom:106px;right:32px;z-index:1000;width:340px;max-height:520px;background:#0a0a1a;border:1px solid rgba(99,102,241,.3);border-radius:16px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 0 60px rgba(99,102,241,.2);opacity:0;pointer-events:none;transform:translateY(16px) scale(.97);transition:opacity .3s,transform .3s;}
+#chatBox.open{opacity:1;pointer-events:all;transform:translateY(0) scale(1);}
+
+.chat-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:rgba(99,102,241,.08);border-bottom:1px solid rgba(99,102,241,.15);}
+.chat-header-left{display:flex;align-items:center;gap:10px;}
+.chat-avatar-sm{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--indigo),var(--cyan));display:flex;align-items:center;justify-content:center;font-family:'Courier New',monospace;font-weight:800;font-size:.7rem;color:#fff;letter-spacing:1px;flex-shrink:0;}
+.chat-name{font-size:.82rem;font-weight:700;color:#fff;letter-spacing:.3px;}
+.chat-status{display:flex;align-items:center;gap:5px;font-size:.68rem;color:var(--muted);margin-top:2px;}
+.chat-dot{width:6px;height:6px;border-radius:50%;background:#34d399;display:inline-block;}
+.chat-close{background:none;border:none;color:var(--muted);font-size:.9rem;cursor:none;transition:color .2s;padding:4px;}
+.chat-close:hover{color:#fff;}
+
+.chat-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin;scrollbar-color:rgba(99,102,241,.2) transparent;}
+.chat-messages::-webkit-scrollbar{width:4px;}
+.chat-messages::-webkit-scrollbar-thumb{background:rgba(99,102,241,.2);border-radius:4px;}
+
+.msg{max-width:85%;padding:10px 14px;border-radius:12px;font-size:.82rem;line-height:1.6;font-family:'Segoe UI',sans-serif;animation:msgIn .3s ease;}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.msg-bot{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.18);color:var(--text);align-self:flex-start;border-bottom-left-radius:4px;}
+.msg-user{background:linear-gradient(135deg,rgba(99,102,241,.3),rgba(56,189,248,.2));border:1px solid rgba(99,102,241,.25);color:#fff;align-self:flex-end;border-bottom-right-radius:4px;}
+.msg-typing{display:flex;gap:5px;padding:12px 14px;align-items:center;}
+.typing-dot{width:6px;height:6px;border-radius:50%;background:var(--indigo);animation:typingBounce 1.2s infinite;}
+.typing-dot:nth-child(2){animation-delay:.2s;}
+.typing-dot:nth-child(3){animation-delay:.4s;}
+@keyframes typingBounce{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}}
+
+.chat-options{padding:10px 12px 14px;display:flex;flex-direction:column;gap:7px;border-top:1px solid rgba(255,255,255,.05);}
+.chat-opt{background:transparent;border:1px solid rgba(99,102,241,.25);color:var(--indigo);border-radius:8px;padding:8px 12px;font-size:.78rem;font-family:'Courier New',monospace;letter-spacing:.3px;cursor:none;text-align:left;transition:all .2s;}
+.chat-opt:hover{background:rgba(99,102,241,.1);border-color:rgba(99,102,241,.5);color:#fff;}
+.chat-opt-row{display:flex;gap:7px;flex-wrap:wrap;}
+.chat-opt-row .chat-opt{flex:1;min-width:fit-content;text-align:center;}
+.chat-opt-wp{border-color:rgba(34,197,94,.3);color:#22c55e;}
+.chat-opt-wp:hover{background:rgba(34,197,94,.1);border-color:#22c55e;color:#fff;}
+
+@media(max-width:480px){
+  #chatBox{width:calc(100vw - 24px);right:12px;bottom:96px;}
+  #chatBtn{bottom:20px;right:20px;}
+}
+/* ── GSAP CARDS ── */
 .gsap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
 .gsap-card{position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden;cursor:none;transition:border-color .3s,transform .2s;}
 .gsap-card:hover{border-color:rgba(99,102,241,.4);transform:translateY(-6px);}
@@ -214,7 +259,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" style="text-decoration:none;cursor:none;"><div class="logo"><span class="bracket">{</span> <span class="nt">NT</span><span class="dot">.</span>Studio ® <span class="bracket">}</span></div></a>
+    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" style="text-decoration:none;cursor:none;"><div class="logo"><span class="bracket">{</span> <span class="nt">NT</span><span class="dot">.</span>Studio <span class="bracket">}</span></div></a>
     <div class="nav-links">
       <a href="#servicios">servicios</a>
       <a href="#proyectos">proyectos</a>
@@ -228,7 +273,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
 <!-- HERO -->
 <section class="hero">
   <div class="hero-code" aria-hidden="true">const studio = {
-  nombre: "NT Studio ®",
+  nombre: "NT Studio",
   dev: "Nicolás Tolaba",
   stack: ["HTML","CSS","JS"],
   tools: ["Make.com","Claude AI",
@@ -246,7 +291,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
   }
 }</div>
   <div class="hero-inner">
-    <div class="hero-pre"><span>// </span>NT Studio ® · Salta, Argentina</div>
+    <div class="hero-pre"><span>// </span>NT Studio · Salta, Argentina</div>
     <h1 id="heroTitle" style="min-height:clamp(6rem,18vw,13rem);display:flex;flex-direction:column;justify-content:center;gap:10px;">
       <span id="heroProblem" style="font-size:clamp(1.4rem,3.8vw,2.8rem);color:#f87171;opacity:0;transition:opacity .4s;min-height:1.2em;display:block;"></span>
       <span id="heroSolution" style="font-size:clamp(1.6rem,4.5vw,3.4rem);opacity:0;transition:opacity .4s;min-height:1.2em;display:block;" class="grad"></span>
@@ -330,9 +375,9 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
           <div class="gsap-card-name">UY q' Rico</div>
           <div class="gsap-card-type">Sandwichería · Landing Page</div>
           <div class="gsap-tags">
-            <span class="gtag" style="background:rgba(59,130,246,.12);color:#60a5fa;border:1px solid rgba(59,130,246,.25);">PUblicidad</span>
+            <span class="gtag" style="background:rgba(59,130,246,.12);color:#60a5fa;border:1px solid rgba(59,130,246,.25);">HTML/CSS</span>
             <span class="gtag" style="background:rgba(59,130,246,.12);color:#60a5fa;border:1px solid rgba(59,130,246,.25);">WhatsApp</span>
-            <span class="gtag" style="background:rgba(59,130,246,.12);color:#60a5fa;border:1px solid rgba(59,130,246,.25);">Carta Digital</span>
+            <span class="gtag" style="background:rgba(59,130,246,.12);color:#60a5fa;border:1px solid rgba(59,130,246,.25);">Netlify</span>
           </div>
         </div>
       </div>
@@ -360,11 +405,11 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
         </div>
         <div class="gsap-card-bottom">
           <div class="gsap-card-name">Uno + Uno</div>
-          <div class="gsap-card-type">Estilo & Belleza · Landing Page</div>
+          <div class="gsap-card-type">Gym & Belleza · Landing Page</div>
           <div class="gsap-tags">
-            <span class="gtag" style="background:rgba(232,121,249,.12);color:#e879f9;border:1px solid rgba(232,121,249,.25);">HTML/CSS/JS</span>
+            <span class="gtag" style="background:rgba(232,121,249,.12);color:#e879f9;border:1px solid rgba(232,121,249,.25);">HTML/CSS</span>
             <span class="gtag" style="background:rgba(232,121,249,.12);color:#e879f9;border:1px solid rgba(232,121,249,.25);">Animaciones</span>
-            <span class="gtag" style="background:rgba(232,121,249,.12);color:#e879f9;border:1px solid rgba(232,121,249,.25);">Pedidos online</span>
+            <span class="gtag" style="background:rgba(232,121,249,.12);color:#e879f9;border:1px solid rgba(232,121,249,.25);">Turnos</span>
           </div>
         </div>
       </div>
@@ -391,8 +436,8 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
           <div class="gsap-card-name">ST — Silvia Tortas</div>
           <div class="gsap-card-type">Pastelería · Landing Page</div>
           <div class="gsap-tags">
+            <span class="gtag" style="background:rgba(244,114,182,.12);color:#f472b6;border:1px solid rgba(244,114,182,.25);">HTML/CSS</span>
             <span class="gtag" style="background:rgba(244,114,182,.12);color:#f472b6;border:1px solid rgba(244,114,182,.25);">Catálogo</span>
-            <span class="gtag" style="background:rgba(244,114,182,.12);color:#f472b6;border:1px solid rgba(244,114,182,.25);">Automatización</span>
             <span class="gtag" style="background:rgba(244,114,182,.12);color:#f472b6;border:1px solid rgba(244,114,182,.25);">WhatsApp</span>
           </div>
         </div>
@@ -407,7 +452,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
   <div class="sec-inner">
     <div class="sec-head reveal">
       <div class="sec-pre">clientes</div>
-      <h2 class="s-title">Lo que dicen<br>quienes confiaron en NT Studio ®</h2>
+      <h2 class="s-title">Lo que dicen<br>quienes confiaron en NT Studio</h2>
     </div>
     <div class="test-grid">
       <div class="test-card reveal" data-n="01">
@@ -430,7 +475,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
           <div class="test-avatar" style="background:linear-gradient(135deg,#e879f9,#67e8f9);">AT</div>
           <div>
             <div class="test-name">Ana T.</div>
-            <div class="test-role">Dueña · Uno + Uno, Estilo Belleza</div>
+            <div class="test-role">Dueña · Uno + Uno, Gym Estilo Belleza</div>
           </div>
         </div>
       </div>
@@ -441,7 +486,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
         <div class="test-author-line">
           <div class="test-avatar" style="background:linear-gradient(135deg,#f472b6,#be185d);">ST</div>
           <div>
-            <div class="test-name">Silvia L.</div>
+            <div class="test-name">Silvia T.</div>
             <div class="test-role">Emprendedora · ST Silvia Tortas</div>
           </div>
         </div>
@@ -515,7 +560,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
     <div class="cta-btns">
       <a href="https://wa.me/543875677045" class="btn-wp" target="_blank">
         <svg width="20" height="20" viewBox="0 0 32 32" fill="white"><path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.832 4.584 2.236 6.34L4.07 28.07l6.91-2.13A12.94 12.94 0 0016 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm6.406 16.594c-.27.76-1.563 1.453-2.14 1.547-.547.088-1.234.125-1.99-.125-.457-.148-1.043-.344-1.797-.676-3.152-1.363-5.207-4.52-5.363-4.73-.156-.207-1.27-1.69-1.27-3.227s.805-2.293 1.09-2.605c.285-.313.621-.391.828-.391.207 0 .414.002.594.01.191.008.449-.072.703.535.262.625.89 2.16.969 2.317.078.156.129.338.025.543-.1.207-.152.336-.305.516-.152.18-.32.402-.457.54-.152.152-.309.316-.133.621.176.305.785 1.293 1.684 2.094 1.156 1.031 2.133 1.352 2.438 1.504.305.152.484.129.664-.078.18-.207.773-.902.977-1.211.203-.305.406-.254.684-.152.277.102 1.766.832 2.07.984.305.152.508.227.582.355.078.129.078.746-.191 1.508z"/></svg>
-        🚀 Quiero hacer crecer mi negocio
+        iniciar_contacto()
       </a>
       <a href="mailto:ntolaba89@gmail.com" class="btn-email">✉ ntolaba89@gmail.com</a>
     </div>
@@ -523,7 +568,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
 </section>
 
 <footer>
-  <div class="footer-logo"><span class="nt">{NT}</span>.Studio ®</div>
+  <div class="footer-logo"><span class="nt">{NT}</span>.Studio</div>
   <div class="footer-copy">© 2026 · Martín Nicolás Tolaba · Salta, Argentina</div>
 </footer>
 
@@ -531,9 +576,9 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
 <script>
 // ── HERO PROBLEM → SOLUTION ──
 const pairs=[
-  {p:'¿Todavía sin página web?',         s:'NT Studio ® te pone online hoy.'},
-  {p:'¿Tu competencia ya está en internet?', s:'NT Studio ® te da la ventaja digital.'},
-  {p:'¿Solo conseguís clientes por recomendación?', s:'NT Studio ® automatiza tu captación.'},
+  {p:'¿Todavía sin página web?',         s:'NT Studio te pone online hoy.'},
+  {p:'¿Tu competencia ya está en internet?', s:'NT Studio te da la ventaja digital.'},
+  {p:'¿Solo conseguís clientes por recomendación?', s:'NT Studio automatiza tu captación.'},
   {p:'¿Respondés mensajes todo el día?',  s:'NT Studio lo hace por vos con IA.'},
 ];
 const elP=document.getElementById('heroProblem');
@@ -673,6 +718,167 @@ function setCur(c){
   document.getElementById('pp').innerHTML=pr[c].p;
   document.getElementById('btnArs').classList.toggle('active',c==='ars');
   document.getElementById('btnUsd').classList.toggle('active',c==='usd');
+}
+
+// ── CHATBOT ──
+const chatBtn=document.getElementById('chatBtn');
+const chatBox=document.getElementById('chatBox');
+const chatClose=document.getElementById('chatClose');
+const chatMessages=document.getElementById('chatMessages');
+const chatOptions=document.getElementById('chatOptions');
+let chatOpened=false;
+
+chatBtn.addEventListener('click',()=>{
+  chatBox.classList.toggle('open');
+  if(!chatOpened){chatOpened=true;setTimeout(startChat,400);}
+});
+chatClose.addEventListener('click',()=>chatBox.classList.remove('open'));
+
+function addMsg(text,type='bot'){
+  const m=document.createElement('div');
+  m.className=`msg msg-${type}`;
+  m.textContent=text;
+  chatMessages.appendChild(m);
+  chatMessages.scrollTop=chatMessages.scrollHeight;
+}
+
+function showTyping(cb,delay=900){
+  const t=document.createElement('div');
+  t.className='msg msg-bot msg-typing';
+  t.innerHTML='<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
+  chatMessages.appendChild(t);
+  chatMessages.scrollTop=chatMessages.scrollHeight;
+  setTimeout(()=>{t.remove();cb();},delay);
+}
+
+function setOptions(opts){
+  chatOptions.innerHTML='';
+  opts.forEach(o=>{
+    const btn=document.createElement('button');
+    btn.className='chat-opt'+(o.cls?' '+o.cls:'');
+    btn.textContent=o.label;
+    btn.addEventListener('click',()=>{
+      addMsg(o.label,'user');
+      chatOptions.innerHTML='';
+      setTimeout(()=>o.action(),300);
+    });
+    chatOptions.appendChild(btn);
+  });
+}
+
+function setOptionsRow(opts){
+  chatOptions.innerHTML='';
+  const row=document.createElement('div');
+  row.className='chat-opt-row';
+  opts.forEach(o=>{
+    const btn=document.createElement('button');
+    btn.className='chat-opt'+(o.cls?' '+o.cls:'');
+    btn.textContent=o.label;
+    btn.addEventListener('click',()=>{
+      addMsg(o.label,'user');
+      chatOptions.innerHTML='';
+      setTimeout(()=>o.action(),300);
+    });
+    row.appendChild(btn);
+  });
+  chatOptions.appendChild(row);
+}
+
+const backHome=()=>({label:'🏠 Volver al inicio',action:showMainMenu});
+const contactWP=()=>({label:'📲 Hablar con Niko',cls:'chat-opt-wp',action:()=>{
+  showTyping(()=>{
+    addMsg('¡Genial! Te redirijo a WhatsApp para hablar directamente con Niko. 🚀');
+    setTimeout(()=>window.open('https://wa.me/543875677045?text=Hola%20Niko!%20Vi%20tu%20landing%20y%20quiero%20consultar%20un%20proyecto','_blank'),800);
+    setTimeout(()=>setOptions([backHome()]),1200);
+  });
+}});
+
+function startChat(){
+  showTyping(()=>{
+    addMsg('¡Hola! Soy tu asistente personal. 👋');
+    showTyping(()=>{
+      addMsg('¿En qué puedo ayudarte hoy?');
+      showMainMenu();
+    },700);
+  },800);
+}
+
+function showMainMenu(){
+  setOptions([
+    {label:'🌐 Landing Pages',action:showLanding},
+    {label:'🤖 Automatizaciones',action:showAuto},
+    {label:'💬 Chatbots',action:showChatbots},
+    {label:'💻 Apps Web',action:showApps},
+    {label:'💰 Ver precios',action:showPrecios},
+  ]);
+}
+
+function showLanding(){
+  showTyping(()=>{
+    addMsg('¡Excelente elección! Diseñamos Landing Pages modernas, rápidas y pensadas para convertir visitantes en clientes. 🌐');
+    showTyping(()=>{
+      addMsg('¿Qué tipo de proyecto tenés en mente?');
+      setOptions([
+        {label:'🙋 Emprendimiento personal',action:()=>recommendPlan('Starter','$60.000 – $90.000 ARS / $60–90 USD')},
+        {label:'🏪 Negocio local',action:()=>recommendPlan('Business','$110.000 – $170.000 ARS / $110–170 USD')},
+        {label:'🏢 Empresa',action:()=>recommendPlan('Enterprise','$220.000 – $380.000 ARS / $220–380 USD')},
+        backHome(),
+      ]);
+    },700);
+  });
+}
+
+function recommendPlan(plan,precio){
+  showTyping(()=>{
+    addMsg(`Para ese perfil te recomendamos el plan ${plan}, con un rango de inversión de ${precio}.`);
+    showTyping(()=>{
+      addMsg('Incluye diseño responsive, publicación en Netlify y 30 días de soporte. ✅');
+      setOptions([contactWP(),{label:'💰 Ver todos los planes',action:showPrecios},backHome()]);
+    },700);
+  });
+}
+
+function showAuto(){
+  showTyping(()=>{
+    addMsg('Creamos flujos automáticos con Make.com y Claude API para que tu negocio trabaje solo. 🤖');
+    showTyping(()=>{
+      addMsg('Desde respuestas automáticas hasta pipelines de contenido con IA. ¿Te interesa?');
+      setOptions([contactWP(),backHome()]);
+    },700);
+  });
+}
+
+function showChatbots(){
+  showTyping(()=>{
+    addMsg('¡Estás hablando con uno! 😄 Desarrollamos chatbots como este para tu negocio.');
+    showTyping(()=>{
+      addMsg('Atención 24/7, captación de leads y redirección a WhatsApp — todo automático.');
+      setOptions([contactWP(),backHome()]);
+    },700);
+  });
+}
+
+function showApps(){
+  showTyping(()=>{
+    addMsg('Desarrollamos herramientas web a medida: presupuestadores, catálogos, formularios inteligentes y más. 💻');
+    showTyping(()=>{
+      addMsg('Cada app pensada para resolver un problema real de tu negocio.');
+      setOptions([contactWP(),backHome()]);
+    },700);
+  });
+}
+
+function showPrecios(){
+  showTyping(()=>{
+    addMsg('Estos son nuestros planes para Landing Pages:');
+    showTyping(()=>{
+      addMsg('🥉 Starter → $60.000–$90.000 ARS / $60–90 USD\n🥈 Business → $110.000–$170.000 ARS / $110–170 USD\n🥇 Enterprise → $220.000–$380.000 ARS / $220–380 USD');
+      showTyping(()=>{
+        addMsg('Todos incluyen diseño responsive, publicación y 30 días de soporte. Los precios varían según la complejidad del proyecto.');
+        setOptions([contactWP(),{label:'🌐 Consultar Landing Page',action:showLanding},backHome()]);
+      },700);
+    },700);
+  });
 }
 
 // ── CTA CODE BG ──
