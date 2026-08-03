@@ -266,14 +266,14 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
       <a href="#testimonios">clientes</a>
       <a href="#planes">planes</a>
     </div>
-    <a href="https://wa.me/543875677045" class="nav-cta" target="_blank">hablemos()</a>
+    <a href="https://wa.me/543875677045" class="nav-cta" target="_blank"> {Contacto} </a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-code" aria-hidden="true">const studio = {
-  nombre: "NT Studio",
+  nombre: "NT Studio ®",
   dev: "Nicolás Tolaba",
   stack: ["HTML","CSS","JS"],
   tools: ["Make.com","Claude AI",
@@ -376,8 +376,8 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
           <div class="gsap-card-type">Sandwichería · Landing Page</div>
           <div class="gsap-tags">
             <span class="gtag" style="background:rgba(59,130,246,.12);color:#60a5fa;border:1px solid rgba(59,130,246,.25);">Automatizacion</span>
-            <span class="gtag" style="background:rgba(59,130,246,.12);color:#60a5fa;border:1px solid rgba(59,130,246,.25);">Carta online</span>
             <span class="gtag" style="background:rgba(59,130,246,.12);color:#60a5fa;border:1px solid rgba(59,130,246,.25);">WhatsApp</span>
+            <span class="gtag" style="background:rgba(59,130,246,.12);color:#60a5fa;border:1px solid rgba(59,130,246,.25);">Catálogo online</span>
           </div>
         </div>
       </div>
@@ -452,7 +452,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
   <div class="sec-inner">
     <div class="sec-head reveal">
       <div class="sec-pre">clientes</div>
-      <h2 class="s-title">Lo que dicen<br>quienes confiaron en NT Studio ®</h2>
+      <h2 class="s-title">Lo que dicen<br>quienes confiaron en NT Studio</h2>
     </div>
     <div class="test-grid">
       <div class="test-card reveal" data-n="01">
@@ -470,7 +470,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
       <div class="test-card reveal" data-n="02">
         <div class="test-stars">★★★★★</div>
         <div class="test-quote-mark">"</div>
-        <div class="test-text">Muy completo el resultado y además fue muy fácil todo el proceso. Niko entiende lo que necesitás y lo plasma exactamente como lo imaginás. Super recomendable.</div>
+        <div class="test-text">Muy completo el resultado y además fue muy fácil todo el proceso. Niko entiende lo que necesitás y lo plasma exactamente como lo imaginás. Lo recomiendo sin dudas.</div>
         <div class="test-author-line">
           <div class="test-avatar" style="background:linear-gradient(135deg,#e879f9,#67e8f9);">AT</div>
           <div>
@@ -721,6 +721,7 @@ function setCur(c){
 }
 
 // ── CHATBOT ──
+document.addEventListener('DOMContentLoaded',()=>{
 const chatBtn=document.getElementById('chatBtn');
 const chatBox=document.getElementById('chatBox');
 const chatClose=document.getElementById('chatClose');
@@ -880,6 +881,8 @@ function showPrecios(){
     },700);
   });
 }
+
+}); // end DOMContentLoaded
 
 // ── CTA CODE BG ──
 const ctaLines=['const cliente = await NT.studio.iniciarProyecto();','if(cliente.necesita("landing")) { return diseñar(); }','// NT Studio · Salta, Argentina · 2026','const resultado = { clientes: "más", tiempo: "ahorrado" };','automatizar().then(crecer).catch(nosLlamás);','export default { servicios: ["landing","bots","apps"] };'];
